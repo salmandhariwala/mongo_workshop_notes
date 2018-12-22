@@ -1,0 +1,39 @@
+# load data in mongo
+load('/Users/salman/Desktop/mongo/data/cities-mongo.js')
+
+# group by state & find count of cities
+
+select state_name,count(1) as total_cities from cities group by state_name
+
+db.cities.aggregate([
+  {
+    "$group": {
+      "_id": "$state_name",
+      "city_count": {
+        "$sum": 1
+      }
+    }
+  }
+]);
+
+# group by state - total population & total grads
+
+select state_name,count(1) as total_cities,sum(population) as total_population,sum(graduates) as total_graduates from cities group by state_name
+
+db.cities.aggregate([
+  {
+    "$group": {
+      "_id": "$state_name",
+      "city_count": {
+        "$sum": 1
+      },
+      "total_population":{
+        "$sum":"$population"
+      },
+      "total_graduates":{
+        "$sum":"$graduates"
+      }
+    }
+  }
+]);
+

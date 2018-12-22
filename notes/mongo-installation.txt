@@ -1,0 +1,37 @@
+********* MACbook ************
+
+1) Create Installation directory 
+mkdir mongo-db-installation
+cd mongo-db-installation
+
+2) download mongo binaries
+wget https://fastdl.mongodb.org/osx/mongodb-osx-ssl-x86_64-4.0.4.tgz
+
+3) unzip mongo binaries
+tar -xvzf mongodb-osx-ssl-x86_64-4.0.4.tgz
+
+4) move to mongo director
+cd mongodb-osx-x86_64-4.0.4
+
+5) create data directory
+mkdir data
+
+6) start mongo daemon server (do not close this window)
+bin/mongod --dbpath data
+
+7) start mongo shell
+bin/mongo
+
+
+************ Linux **********
+
+https://www.mongodb.com/download-center/community
+
+- change link in step 2
+- change directory command
+
+
+************ Windows **********
+
+refer : https://docs.mongodb.com/v3.2/tutorial/install-mongodb-on-windows/
+

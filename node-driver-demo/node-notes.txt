@@ -1,0 +1,7 @@
+# install mongo package
+npm install mongodb
+
+# run crud operations
+node crud.js
+
+# run aggregations

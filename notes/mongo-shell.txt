@@ -1,0 +1,10 @@
+# to get the list of databases
+show dbs
+
+# change database
+use workshop
+
+# get list of collections
+show collections
+
+Refer : https://docs.mongodb.com/manual/reference/mongo-shell/

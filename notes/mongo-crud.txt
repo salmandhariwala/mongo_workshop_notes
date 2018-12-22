@@ -1,0 +1,188 @@
+# convert csv to json
+https://www.csvjson.com/csv2json
+
+# change database
+use workshop
+
+
+************************************************** create records [C] **************************************************
+
+# insert into database (one record at a time)
+
+db.students.insert({
+    "id": 1,
+    "name": "salman",
+    "city": "mumbai",
+    "ssc_percentage": 80,
+    "hsc_percentage": 90,
+    "college": "vesit"
+  });
+
+db.students.insert({
+    "id": 2,
+    "name": "mahesh",
+    "city": "pune",
+    "ssc_percentage": 78,
+    "hsc_percentage": 98,
+    "college": "mit"
+  });
+
+db.students.insert({
+    "id": 3,
+    "name": "ramesh",
+    "city": "banglore",
+    "ssc_percentage": 40,
+    "hsc_percentage": 90,
+    "college": "vit"
+  });
+
+db.students.insert({
+    "id": 4,
+    "name": "bhupati",
+    "city": "mumbai",
+    "ssc_percentage": 77,
+    "hsc_percentage": 99,
+    "college": "spit"
+  });
+
+# show data
+db.students.find().pretty();
+
+# clear collection
+db.students.remove({});
+
+# insert into database (bulk insert)
+db.students.insert([
+  {
+    "id": 1,
+    "name": "salman",
+    "city": "mumbai",
+    "ssc_percentage": 80,
+    "hsc_percentage": 90,
+    "college": "vesit"
+  },
+  {
+    "id": 2,
+    "name": "mahesh",
+    "city": "pune",
+    "ssc_percentage": 78,
+    "hsc_percentage": 98,
+    "college": "mit"
+  },
+  {
+    "id": 3,
+    "name": "ramesh",
+    "city": "banglore",
+    "ssc_percentage": 40,
+    "hsc_percentage": 90,
+    "college": "vit"
+  },
+  {
+    "id": 4,
+    "name": "bhupati",
+    "city": "mumbai",
+    "ssc_percentage": 77,
+    "hsc_percentage": 99,
+    "college": "spit"
+  }
+]);
+
+# show data
+db.students.find().pretty();
+
+************************************************** retrieve records [R] **************************************************
+
+format : db.<collection name>.find(<json condition>,<projection json format>)
+
+# retreive all records 
+
+select * from students;
+
+db.students.find().pretty();
+
+# retreive some records
+
+select * from students limit 2;
+
+db.students.find().limit(2).pretty();
+
+# retrieve specific records
+
+select * from students where id = 1;
+
+db.students.find({id:1}).pretty();
+
+select * from students where city = 'mumbai';
+
+db.students.find({"city": "mumbai"}).pretty();
+
+select * from students where city = "mumbai" and college = "vesit"
+
+db.students.find({"city": "mumbai","college":"vesit"}).pretty();
+
+# retrieve records based on condition
+
+select * from students where id > 2;
+
+db.students.find({id:{$gt:2}}).pretty();
+
+select * from students where ssc_percentage > 45;
+
+db.students.find({ssc_percentage:{$lt:45}}).pretty()
+
+# get distinct cities
+
+select distinct city from students;
+
+db.students.distinct("city")
+
+# project specific fields
+
+select id,city from students where ssc_percentage > 45;
+
+db.students.find({ssc_percentage:{$lt:45}},{id:1,city:1}).pretty();
+
+
+************************************************** update records [U] **************************************************
+
+format : db.<collection name>.update(<json condition>,$set:<json values>,<options>)
+
+# update single record
+update students set city = 'nagpur' where id = 1
+
+db.students.update({id:1},{$set:{"city":"nagpur"}})
+
+# update multiple records
+
+update students set result = 'fail' where ssc_percentage <= 40
+
+db.students.update({ssc_percentage:{$lte:40}},{$set:{result:"fail"}},{multi:true})
+
+update students set result = 'fail' where ssc_percentage <= 78
+
+db.students.update({ssc_percentage:{$lte:78}},{$set:{result:"fail"}},{multi:true})
+
+
+************************************************* delete records [D] *************************************************
+
+format : db.<collection name>.remove(<json condition>)
+
+# delete single record
+
+delete from students where id = 2
+db.students.remove({id:2})
+
+# delete multiple records
+
+delete from students where city = 'mumbai'
+db.students.remove({city:'mumbai'})
+
+# delete all the records
+
+delete from students
+db.students.remove({})
+
+
+
+https://cloud.mongodb.com/freemonitoring/cluster/SLJG2YCDBTNO2FKGHJ2BUZQNL7B2QOWH
+

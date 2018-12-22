@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "salman",
+    "city": "mumbai",
+    "ssc_percentage": 80,
+    "hsc_percentage": 90,
+    "college": "vesit"
+  },
+  {
+    "id": 2,
+    "name": "mahesh",
+    "city": "pune",
+    "ssc_percentage": 78,
+    "hsc_percentage": 98,
+    "college": "mit"
+  },
+  {
+    "id": 3,
+    "name": "ramesh",
+    "city": "banglore",
+    "ssc_percentage": 40,
+    "hsc_percentage": 90,
+    "college": "vit"
+  },
+  {
+    "id": 4,
+    "name": "bhupati",
+    "city": "mumbai",
+    "ssc_percentage": 77,
+    "hsc_percentage": 99,
+    "college": "spit"
+  }
+]
