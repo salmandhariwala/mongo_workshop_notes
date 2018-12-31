@@ -1,5 +1,5 @@
 # load data in mongo
-load('/Users/salman/Desktop/mongo/data/cities-mongo.js')
+load('/Users/salman/Desktop/personal/mongo_workshop/mongo_workshop_notes/data/script/cities-mongo.js')
 
 # group by state & find count of cities
 
@@ -34,6 +34,38 @@ db.cities.aggregate([
         "$sum":"$graduates"
       }
     }
+  }
+]);
+
+
+
+db.cities.aggregate([
+  {
+    "$group": {
+      "_id": "$state_name",
+      "city_count": {
+        "$sum": 1
+      },
+      "total_population":{
+        "$sum":"$population"
+      },
+      "total_graduates":{
+        "$sum":"$graduates"
+      }
+    }
+  },
+  {
+    "$match":{
+      "city_count":{"$gt":5}
+    }
+  },
+  {
+    "$sort":{
+      city_count:-1
+    }
+  },
+  {
+    "$limit" : 5
   }
 ]);
 

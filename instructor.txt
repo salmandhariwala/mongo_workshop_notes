@@ -1,0 +1,27 @@
+** generic **
+db.<collection_name>.<command>();
+db.<collection_name>.<command>().<function>();
+
+** find/retreive **
+db.<collection name>.find(<json condition>,<projection json format>)
+
+** update **
+db.<collection name>.update(<json condition>,$set:<json values>,<options>)
+
+** aggregation **
+db.<collection name>.aggregate([
+{
+	"$group":{
+	"_id":"$<dimension>",
+	"metric_aggregation_name":{
+	"$<summary>":"$<column>"
+	}
+	}
+}
+]);
+
+
+<<<<>>>>>>
+
+
+
