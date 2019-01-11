@@ -1,1 +1,1 @@
-# mongo_workshop
+# contains workshop slides & handson material
